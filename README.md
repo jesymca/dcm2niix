@@ -69,11 +69,11 @@ MacOS: `brew install cmake pkg-config` o `sudo port install cmake pkgconfig`
 
 **Construcción básica:**
 ```bash
-clon de git https://github.com/rordenlab/dcm2niix.git
+git clone https://github.com/rordenlab/dcm2niix.git
 cd dcm2niix
-compilación de mkdir && compilación de cd
-hacer ..
-hacer
+mkdir build && cd build
+cmake ..
+make
 ```
 Se creará `dcm2niix` en la subcarpeta `bin`. Para instalar en el sistema, ejecute `make install` en lugar de `make`; esto copiará el ejecutable en su ruta para que no tenga que proporcionar la ruta completa al ejecutable.
 
@@ -84,11 +84,11 @@ En casos excepcionales, si cmake falla con un mensaje como `"Generador: la ejecu
 Como se indica en la sección `Soporte de compresión y conversión de imágenes`, el software proporciona muchos módulos opcionales con características mejoradas. Una opción común podría ser incluir soporte para JPEG2000, [JPEG-LS](https://github.com/team-charls/charls) (esta opción requiere un compilador c++14), además de usar el alto rendimiento Biblioteca zlib de Cloudflare (esta opción requiere una CPU construida después de 2008). Para construir con estas opciones, simplemente solicítelas al configurar cmake:
 
 ```bash
-clon de git https://github.com/rordenlab/dcm2niix.git
+git clone https://github.com/rordenlab/dcm2niix.git
 cd dcm2niix
-compilación de mkdir && compilación de cd
+mkdir build && cd build
 cmake -DZLIB_IMPLEMENTATION=Cloudflare -DUSE_JPEGLS=ON -DUSE_OPENJPEG=ON ..
-hacer
+make
 ```
 
 **versión de procesamiento por lotes opcional:**
@@ -200,4 +200,3 @@ Las siguientes herramientas explotan dcm2niix
 - [TORTOISE](https://tortoise.nibib.nih.gov) se usa para procesar datos de MRI de difusión y usa dcm2niix para importar imágenes DICOM.
   - [TractoR (Tractografía ­con R) utiliza dcm2niix para la conversión de imágenes](http://www.tractor-mri.org.uk/TractoR-and-DICOM).
 - [XNAT2BIDS](https://github.com/kamillipi/2bids) es una canalización xnat simple para convertir escaneos DICOM a salida compatible con BIDS.
-
